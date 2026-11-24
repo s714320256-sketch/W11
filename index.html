@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>毛小孩の家 - 寵物美容工作室</title>
+  <!-- Google Fonts: Noto Sans TC & Quicksand -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #ff8e6e;
+      --primary-dark: #e06c4a;
+      --accent-color: #f7d070;
+      --bg-cream: #fffaf5;
+      --card-bg: #ffffff;
+      --text-main: #3d342f;
+      --text-muted: #726259;
+      --shadow-soft: 0 10px 25px rgba(224, 108, 74, 0.08);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, #fff5ed 0%, #ffe9dc 100%);
+      padding: 3.5rem 1.25rem 2.5rem;
+      text-align: center;
+      position: relative;
+      border-bottom: 2px dashed rgba(255, 142, 110, 0.3);
+    }
+
+    .brand-title {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      letter-spacing: 1px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 0.5rem;
+    }
+
+    .brand-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 1.75rem;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    /* 頂部店家資訊卡 */
+    .intro-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.25rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(255, 142, 110, 0.15);
+      margin-top: -2.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .intro-lead {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 1.25rem 0 1.75rem;
+    }
+
+    .tag {
+      background: #fff0e8;
+      color: var(--primary-dark);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .info-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid #f2e9e4;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.98rem;
+    }
+
+    .info-icon {
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      background: #ffebe3;
+      color: var(--primary-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+    }
+
+    .info-content strong {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+
+    .info-content a {
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+
+    .info-content a:hover {
+      text-decoration: underline;
+    }
+
+    /* 區塊標題 */
+    .section-title {
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 3.5rem 0 1.5rem;
+      text-align: center;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      width: 50px;
+      height: 3px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    /* 中間：價目表與作品照 */
+    .grid-two-cols {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .media-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid #f2e9e4;
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .media-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+    }
+
+    .media-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .media-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: var(--radius-md);
+      background-color: #faf7f5;
+    }
+
+    /* 下方：衛教卡 */
+    .care-card-wrapper {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .care-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid #f2e9e4;
+      text-align: center;
+    }
+
+    .care-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: var(--radius-md);
+    }
+
+    /* 頁尾 */
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid #eeddd3;
+      background-color: #fcf6f0;
+      margin-top: 3rem;
+    }
+
+    /* 手機螢幕優化 */
+    @media (max-width: 640px) {
+      .brand-title {
+        font-size: 2rem;
+      }
+
+      .intro-card {
+        padding: 1.5rem 1.25rem;
+        margin-top: -1.5rem;
+      }
+
+      .media-card, .care-card {
+        padding: 1rem;
+      }
+
+      .section-title {
+        font-size: 1.4rem;
+        margin: 2.5rem 0 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頁頭與品牌標題 -->
+  <header>
+    <h1 class="brand-title">🐾 毛小孩の家</h1>
+    <p class="brand-subtitle">寵物美容工作室（一對一專屬呵護・不關籠・不趕時間）</p>
+  </header>
+
+  <main class="container">
+    <!-- 1. 最上面：介紹、營業時間、預約電話 -->
+    <section class="intro-card">
+      <p class="intro-lead">
+        我們是一間開在住宅區的小型寵物美容工作室，一次只接一隻，不關籠、不趕時間。<br>
+        怕生、年紀大、第一次美容的毛孩，都可以慢慢來。
+      </p>
+
+      <div class="tags-container">
+        <span class="tag">🐶 🐱 服務對象：小型犬、中大型犬、貓</span>
+        <span class="tag">✨ 特色：一對一美容</span>
+        <span class="tag">📷 美容過程可拍照回報給飼主</span>
+      </div>
+
+      <div class="info-list">
+        <div class="info-item">
+          <div class="info-icon">⏰</div>
+          <div class="info-content">
+            <strong>營業時間</strong>
+            <span>週二到週日 10:00–19:00<br><small style="color:#d9534f; font-weight:600;">（週一公休）</small></span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div class="info-content">
+            <strong>預約電話</strong>
+            <a href="tel:0900000000">0900-000-000</a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">💬</div>
+          <div class="info-content">
+            <strong>官方 LINE 預約</strong>
+            <span style="font-weight: 600; color: #2e7d32;">@maoxiaohai</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 中間：價目表和作品照 -->
+    <h2 class="section-title">服務價目與美容作品</h2>
+    <section class="grid-two-cols">
+      <div class="media-card">
+        <h3>📋 美容服務價目表</h3>
+        <img src="price.png" alt="毛小孩の家 服務價目表" loading="lazy">
+      </div>
+      <div class="media-card">
+        <h3>✂️ 美容作品照</h3>
+        <img src="photo.png" alt="毛小孩の家 美容作品照" loading="lazy">
+      </div>
+    </section>
+
+    <!-- 3. 下面：衛教卡（美容後照護） -->
+    <h2 class="section-title">美容後照護</h2>
+    <section class="care-card-wrapper">
+      <div class="care-card">
+        <img src="care.png" alt="毛小孩の家 美容後照護衛教卡" loading="lazy">
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 毛小孩の家 寵物美容工作室 | 課堂練習示範頁面</p>
+  </footer>
+
+</body>
+</html>
